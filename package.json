@@ -1,0 +1,24 @@
+{
+  "name": "fundamentals",
+  "version": "0.0.0",
+  "description": "fundamentals ============",
+  "main": "server.js",
+  "dependencies": {
+    "express": "~3.4.6",
+    "mongoose": "~3.8.1",
+    "path": "~0.4.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/adimasuhid/fundamentals.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "gitHead": "fb8f7e0894452ab1ebdaaf04eab95b4785d3a5e0",
+  "readmeFilename": "README.md"
+}
