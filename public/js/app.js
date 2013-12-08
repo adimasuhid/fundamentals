@@ -11,13 +11,16 @@
             title: "Some title",
             author: "Ace Dimasuhid",
             releaseDate:"2012",
-            keywords: "Javascript Programming"
-        }
+            keywords: "None"
+        },
+        idAttributes: "_id"
+
     });
 
     //Collections
     var Library = Backbone.Collection.extend({
-        model: Book
+        model: Book,
+        url: '/api/books'
     });
 
     //Views
@@ -51,11 +54,13 @@
         },
 
         initialize: function(){
-            this.collection = new Library(books);
+            this.collection = new Library();
+            this.collection.fetch();
             this.render();
 
             this.collection.on("add", this.renderBook, this);
             this.collection.on("remove", this.removeBook, this);
+            this.collection.on("reset", this.render, this);
         },
 
         render: function(){
@@ -81,6 +86,7 @@
                 }
             });
 
+            this.collection.remove(removedBook);
             _.each(books, function(book){
                 if(_.isEqual(book, removedBookData)){
                     books.splice(_.indexOf(books, book), 1);
@@ -101,9 +107,7 @@
                 }
             });
 
-            books.push(formData);
-
-            this.collection.add(new Book(formData));
+            this.collection.create(formData);
         },
 
         formValue: function(id, value){
